@@ -1,0 +1,8 @@
+apiVersion: container/v1
+kind: StepContainer
+inherit: {from: sdk, name: bash.v1}
+title: Run an npx command
+description: >
+  This step container runs an npx command.
+settings:
+  Image: node:lts-alpine
