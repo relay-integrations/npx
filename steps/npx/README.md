@@ -1,7 +1,53 @@
 # npx
 
-This step container runs an [npx](https://www.npmjs.com/package/npx) command.
+This [npx](https://www.npmjs.com/package/npx) step container runs an npx command.
 
-## Documentation
+## Specifications
 
-* [Version 1.x](docs/v1.md)
+| Setting | Child setting | Data type | Description | Default | Required |
+|---------|---------------|-----------|-------------|---------|----------|
+| `command` || string | Executes command by installing latest package from the npm registry. | None | True |
+| `flags` || mapping | Optional flags passed to npx. || False |
+|| `package` | string | Can be used when the binary name does not match the package name or for packages with multiple binaries if you want to call one of the other executables. | Defaults to the value of `command` | False |
+| `commandFlags` || mapping | Optional flags passed to the command. || False |
+| `git` || mapping | A map of git configuration. If you're using HTTPS, only `name` and `repository` are required. | None | False |
+|| `ssh_key` | string | The SSH key to use when cloning the git repository. You can pass the key to Nebula as a secret. See the example below. | None | False |
+|| `known_hosts` | string | SSH known hosts file. Use a Nebula secret to pass the contents of the file into the workflow as a base64-encoded string. See the example below. | None | False |
+|| `name` | string | A directory name for the git clone. | None | False |
+|| `branch` | string | The Git branch to clone or reference for the build. | `master` | False |
+|| `repository` | string | The git repository URL. | None | False |
+| `packageFolder` || string | Location of the folder containing a package.json file if located in a subfolder. | ``./`` | False |
+| `npm` || mapping | NPM credentials | None | Certain commands like `publish` require NPM login. |
+|| `token` | string | NPM token created via `npm token create` | None | False |
+
+## Examples
+
+```yaml
+steps:
+# ...
+- name: npx
+  image: projectnebula/npx
+  spec:
+    command: cowsay hello world
+- name: npx
+  spec:
+    command: lerna publish
+    flags:
+      quiet: true
+    commandFlags:
+      yes: true
+    git:
+      name: design-system,
+      repository: https://github.com/puppetlabs/design-system.git
+    packageFolder: packages/react-components
+    npm:
+      token:
+        $type: Secret
+        name: npm_token
+```
+
+## Contributing
+
+1. Create a spec file: `echo '{ "command": "cowsay Hello world" }' > npx/spec.json`
+2. Build the container: `./scripts/build npx`
+3. Run the container (replacing the last argument with the id from the output of the previous step): `docker run -e SPEC_URL=file:///spec.json -v $(pwd)/npx/spec.json:/spec.json --rm -ti sdk.nebula.localhost/intermediate/3ea96cee5cec/npx`
