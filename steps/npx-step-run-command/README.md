@@ -1,4 +1,4 @@
-# npx
+# npx-step-run-command
 
 This [npx](https://www.npmjs.com/package/npx) step container runs an npx command.
 
@@ -26,7 +26,7 @@ This [npx](https://www.npmjs.com/package/npx) step container runs an npx command
 steps:
 # ...
 - name: npx
-  image: projectnebula/npx
+  image: relaysh/npx-step-run-command
   spec:
     command: cowsay hello world
 - name: npx
