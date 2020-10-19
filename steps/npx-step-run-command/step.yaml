@@ -14,7 +14,7 @@ name: npx-step-run-command
 version: 3
 
 # High-level phrase describing what this action does. Required.
-summary: Run command
+summary: Run NPX command
 
 # Single-paragraph explanation of what this action does in more detail.
 # Optional. Markdown.
