@@ -11,6 +11,10 @@
       "description": "Location of the folder in which to run the npx command.",
       "default": "./"
     },
+    "nodeVersion": {
+      "type": "string",
+      "description": "Optional Node.js version. If unspecified, the latest LTS version will be used (as defined by the Debian-based node:lts image). The version string can be any version installable by nvm. To use an .nvmrc file in your repository to specify a Node.js version, you must specify a nodeVersion of \"auto\"."
+    },
     "flags": {
       "type": "object",
       "description": "Optional flags passed to npx.",
@@ -63,7 +67,7 @@
       "properties": {
         "token": {
           "type": "string",
-          "description": "NPM token created via `npm token create` required by certain commands like publish."
+          "description": "Optional NPM token (created via `npm token create`) for things like publishing."
         }
       }
     }
