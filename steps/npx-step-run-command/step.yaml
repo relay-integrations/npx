@@ -38,6 +38,11 @@ build:
 publish:
   repository: relaysh/npx-step-run-command
 
+schemas:
+  spec:
+    source: file
+    file: spec.schema.json
+
 examples:
 - summary: run simple npx command
   content:

@@ -8,26 +8,24 @@ This [npx](https://www.npmjs.com/package/npx) step container runs an npx command
 |------|-------------|
 | [steps/npx-step-run-command](steps/npx-step-run-command) | Run an npx command |
 
-## Specifications
-
-| Setting | Child setting | Data type | Description | Default | Required |
-|---------|---------------|-----------|-------------|---------|----------|
-| `command` || string | Executes command by installing latest package from the npm registry. | None | True |
-| `flags` || mapping | Optional flags passed to npx. || False |
-|| `package` | string | Can be used when the binary name does not match the package name or for packages with multiple binaries if you want to call one of the other executables. | Defaults to the value of `command` | False |
-| `commandFlags` || mapping | Optional flags passed to the command. || False |
-| `git` || mapping | A map of git configuration. If you're using HTTPS, only `name` and `repository` are required. | None | False |
-|| `ssh_key` | string | The SSH key to use when cloning the git repository. You can pass the key to Nebula as a secret. See the example below. | None | False |
-|| `known_hosts` | string | SSH known hosts file. Use a Nebula secret to pass the contents of the file into the workflow as a base64-encoded string. See the example below. | None | False |
-|| `name` | string | A directory name for the git clone. | None | False |
-|| `branch` | string | The Git branch to clone or reference for the build. | `master` | False |
-|| `repository` | string | The git repository URL. | None | False |
-| `packageFolder` || string | Location of the folder containing a package.json file if located in a subfolder. | ``./`` | False |
-| `npm` || mapping | NPM credentials | None | Certain commands like `publish` require NPM login. |
-|| `token` | string | NPM token created via `npm token create` | None | False |
-
 ## Contributing
 
-1. Create a spec file: `echo '{ "command": "cowsay Hello world" }' > npx/spec.json`
-2. Build the container: `./scripts/build npx`
-3. Run the container (replacing the last argument with the id from the output of the previous step): `docker run -e SPEC_URL=file:///spec.json -v $(pwd)/npx/spec.json:/spec.json --rm -ti sdk.nebula.localhost/intermediate/3ea96cee5cec/npx`
+### Issues
+
+Feel free to submit issues and enhancement requests.
+
+### Contributing Code
+
+In general, we follow the "fork-and-pull" Git workflow.
+
+ 1. **Fork** the repo on GitHub
+ 2. **Clone** the project to your own machine
+ 3. **Commit** changes to your own branch
+ 4. **Push** your work back up to your fork
+ 5. Submit a **Pull request** so that we can review your changes
+
+NOTE: Be sure to merge the latest from "upstream" before making a pull request!
+
+### License
+
+As indicated by the repository, this project is licensed under Apache 2.0.
