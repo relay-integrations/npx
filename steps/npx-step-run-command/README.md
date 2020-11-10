@@ -1,6 +1,12 @@
-# npx-step-run-command
+# NPX integration for Relay.sh
 
 This [npx](https://www.npmjs.com/package/npx) step container runs an npx command.
+
+## Steps
+
+| Name | Description |
+|------|-------------|
+| [steps/npx-step-run-command](steps/npx-step-run-command) | Run an npx command |
 
 ## Specifications
 
@@ -19,32 +25,6 @@ This [npx](https://www.npmjs.com/package/npx) step container runs an npx command
 | `packageFolder` || string | Location of the folder containing a package.json file if located in a subfolder. | ``./`` | False |
 | `npm` || mapping | NPM credentials | None | Certain commands like `publish` require NPM login. |
 || `token` | string | NPM token created via `npm token create` | None | False |
-
-## Examples
-
-```yaml
-steps:
-# ...
-- name: npx
-  image: relaysh/npx-step-run-command
-  spec:
-    command: cowsay hello world
-- name: npx
-  spec:
-    command: lerna publish
-    flags:
-      quiet: true
-    commandFlags:
-      yes: true
-    git:
-      name: design-system,
-      repository: https://github.com/puppetlabs/design-system.git
-    packageFolder: packages/react-components
-    npm:
-      token:
-        $type: Secret
-        name: npm_token
-```
 
 ## Contributing
 
