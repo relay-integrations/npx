@@ -18,7 +18,7 @@ channel: stable
 #
 # As a convenience, this information may come from another text file or from a
 # Git tag (if applicable). We may add additional sources in the future.
-version: v20200408
+version: v20201110
 
 # The shortest possible accurate description of this integration. Required. May
 # just be the name of the service.
