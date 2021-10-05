@@ -11,6 +11,7 @@ RUN set -eux ; \
     mv ni-v1*-linux-amd64 /usr/local/bin/ni && \
     cd - && \
     rm -fr /tmp/ni
+RUN apt-get install jq
 COPY "./step.sh" "/nebula/step-npx.sh"
 ENTRYPOINT []
 CMD ["/bin/bash", "/nebula/step-npx.sh"]
