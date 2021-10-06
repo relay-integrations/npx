@@ -4,7 +4,7 @@
   "properties": {
     "command": {
       "type": "string",
-      "description": "Executes command by installing latest package from the npm registry."
+      "description": "Executes command by installing latest package from the npm registry. Note: Omit 'npx'."
     },
     "packageFolder": {
       "type": "string",
