@@ -2,12 +2,6 @@
 
 This [npx](https://www.npmjs.com/package/npx) step container runs an npx command.
 
-## Steps
-
-| Name | Description |
-|------|-------------|
-| [steps/npx-step-run-command](steps/npx-step-run-command) | Run an npx command |
-
 ## Contributing
 
 ### Issues
