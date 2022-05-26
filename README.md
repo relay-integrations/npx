@@ -2,6 +2,12 @@
 
 Integration with NPX for Puppet Relay.
 
+## Steps
+
+| Name | Description |
+|------|-------------|
+| [steps/npx-step-run-command](/steps/npx-step-run-command) | Run an npx command |
+
 ## Contributing
 
 ### Issues
